@@ -40,7 +40,7 @@ $valId     = $esEdicion ? (int)$producto->getId() : 0;
 
   <div class="mb-3">
     <label class="form-label">Descripción</label>
-    <textarea class="form-control" name="descripcion" maxlength="255" rows="3"><?= $esEdicion ? htmlspecialchars($valDescripcion) : '' ?></textarea>
+    <textarea class="form-control" name="descripcion" maxlength="100" rows="3"><?= $esEdicion ? htmlspecialchars($valDescripcion) : '' ?></textarea>
   </div>
 
   <div class="mb-3">
