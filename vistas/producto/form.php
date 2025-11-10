@@ -13,6 +13,14 @@ $valPrecio = $esEdicion ? (string)$producto->precio : '';
 $valDescripcion = $esEdicion ? $producto->descripcion : '';
 $valStock = $esEdicion ? (int)$producto->stock : 0;
 $valId     = $esEdicion ? (int)$producto->getId() : 0;
+$fail = function (string $msg) use ($producto): void {
+        $_SESSION['error'] = $msg;
+        $_SESSION['old']   = $producto;
+
+        //Redirect INDEX.X
+        header('Location: ' . FORM_URL);  
+        exit;
+    };
 ?>
 <h2 class="text-success text-center mt-4"><?= htmlspecialchars($titulo) ?></h2>
 
@@ -34,7 +42,7 @@ $valId     = $esEdicion ? (int)$producto->getId() : 0;
 
   <div class="mb-3">
     <label class="form-label">Precio (€)</label>
-    <input class="form-control" name="precio" type="number" step="0.01" min="0" required
+    <input class="form-control" name="precio" type="number" step="0.01" required
            value="<?= htmlspecialchars($valPrecio) ?>">
   </div>
 
@@ -45,7 +53,7 @@ $valId     = $esEdicion ? (int)$producto->getId() : 0;
 
   <div class="mb-3">
     <label class="form-label">Stock</label>
-    <input class="form-control" name="stock" type="number" min="0" required
+    <input class="form-control" name="stock" type="number" required
            value="<?= $esEdicion ? htmlspecialchars($valStock) : '' ?>">
   </div>
 

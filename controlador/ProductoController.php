@@ -34,7 +34,7 @@ final class ProductoController
         $precio = $_POST['precio'] ?? '';
         $descripcion = trim($_POST['descripcion'] ?? '');
         $stock = (int)($_POST['stock'] ?? 0);
-        if ($nombre === '' || !is_numeric($precio) || (float)$precio < 0 || $stock < 0) {
+        if ($nombre === '' || !is_numeric($precio) || (float)$precio < 0 || $stock < 0 || $descripcion === '') {
             http_response_code(422);
             echo self::error('Datos inválidos', 'index.php?p=productos&action=nuevo'); return;
         }
@@ -73,7 +73,7 @@ final class ProductoController
         $precio = $_POST['precio'] ?? '';
         $descripcion = trim($_POST['descripcion'] ?? '');
         $stock = (int)($_POST['stock'] ?? 0);
-        if ($id<=0 || $nombre==='' || !is_numeric($precio) || (float)$precio<0) {
+        if ($id<=0 || $nombre==='' || !is_numeric($precio) || (float)$precio<0 || $stock<0 || $descripcion==='') {
             http_response_code(422);
             echo self::error('Datos inválidos', 'index.php?p=contenido'); return;
         }
