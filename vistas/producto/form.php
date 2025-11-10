@@ -13,14 +13,6 @@ $valPrecio = $esEdicion ? (string)$producto->precio : '';
 $valDescripcion = $esEdicion ? $producto->descripcion : '';
 $valStock = $esEdicion ? (int)$producto->stock : 0;
 $valId     = $esEdicion ? (int)$producto->getId() : 0;
-$fail = function (string $msg) use ($producto): void {
-        $_SESSION['error'] = $msg;
-        $_SESSION['old']   = $producto;
-
-        //Redirect INDEX.X
-        header('Location: ' . FORM_URL);  
-        exit;
-    };
 ?>
 <h2 class="text-success text-center mt-4"><?= htmlspecialchars($titulo) ?></h2>
 
