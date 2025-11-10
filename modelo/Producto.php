@@ -19,12 +19,14 @@ class Producto extends Entidad
   
     public function __construct(
     public string $nombre,
-    public float $precio
+    public float $precio,
+    public string $descripcion,
+    public int $stock
   ) {}
   
     public static function vacio(): self
     {
-        return new self("", 0.0);
+        return new self("", 0.0, "", 0);
     }
   
     /**
@@ -35,7 +37,9 @@ class Producto extends Entidad
         return [
             'id'      => $this->getId(),
             'nombre'  => $this->nombre,
-            'precio'     => $this->precio
+            'precio'     => $this->precio,
+            'descripcion' => $this->descripcion,
+            'stock'       => $this->stock
         ];
     }
 }
